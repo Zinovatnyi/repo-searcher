@@ -1,6 +1,6 @@
-import { Observable, fromEvent, combineLatest, merge } from 'rxjs';
+import { Observable, fromEvent} from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-import { map, catchError, pluck, mapTo } from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 
 function searchProject (projectName:string) {
   const projects$: Observable<any> = ajax.getJSON(`https://api.github.com/search/repositories?q=${projectName}+language:assembly&sort=stars&order=desc`);
@@ -32,7 +32,7 @@ function divFactory(seachRes: any) {
     let newDivImg = document.createElement('img');
         newDivText = document.body.appendChild(newDivText);
         newDivImg = document.body.appendChild(newDivImg);
-        let somediv = document.getElementById('some');
+        let somediv = document.getElementById('someDiv');
         document.body.insertBefore(newDivText, somediv);
         document.body.insertBefore(newDivImg, somediv);
         newDivText.innerHTML = "<h1>"+seachRes.name+"<h1>";
